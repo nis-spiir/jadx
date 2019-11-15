@@ -79,6 +79,9 @@ public class JadxCLIArgs {
 	@Parameter(names = { "--deobf-max" }, description = "max length of name, renamed if longer")
 	protected int deobfuscationMaxLength = 64;
 
+	@Parameter(names = { "--deobf-whitelist" }, description = "comma-seperated whitelist list of identifiers thats allowed")
+	protected List<String> deobfuscationWhitelist = new ArrayList<>(0);
+
 	@Parameter(names = { "--deobf-rewrite-cfg" }, description = "force to save deobfuscation map")
 	protected boolean deobfuscationForceSave = false;
 
@@ -193,6 +196,7 @@ public class JadxCLIArgs {
 		args.setDeobfuscationForceSave(deobfuscationForceSave);
 		args.setDeobfuscationMinLength(deobfuscationMinLength);
 		args.setDeobfuscationMaxLength(deobfuscationMaxLength);
+		args.setDeobfuscationWhitelist(deobfuscationWhitelist);
 		args.setUseSourceNameAsClassAlias(deobfuscationUseSourceNameAsAlias);
 		args.setEscapeUnicode(escapeUnicode);
 		args.setRespectBytecodeAccModifiers(respectBytecodeAccessModifiers);
@@ -265,6 +269,10 @@ public class JadxCLIArgs {
 
 	public int getDeobfuscationMaxLength() {
 		return deobfuscationMaxLength;
+	}
+
+	public List<String> getDeobfuscationWhitelist() {
+		return deobfuscationWhitelist;
 	}
 
 	public boolean isDeobfuscationForceSave() {

@@ -54,8 +54,9 @@ public class Deobfuscator {
 	private final Set<String> pkgSet = new TreeSet<>();
 	private final Set<String> reservedClsNames = new HashSet<>();
 
-	private final int maxLength;
 	private final int minLength;
+	private final int maxLength;
+	private final List<String> whitelist;
 	private final boolean useSourceNameAsAlias;
 
 	private int pkgIndex = 0;
@@ -69,6 +70,7 @@ public class Deobfuscator {
 
 		this.minLength = args.getDeobfuscationMinLength();
 		this.maxLength = args.getDeobfuscationMaxLength();
+		this.whitelist = args.getDeobfuscationWhitelist();
 		this.useSourceNameAsAlias = args.isUseSourceNameAsClassAlias();
 
 		this.deobfPresets = new DeobfPresets(this, deobfMapFile);
@@ -517,6 +519,9 @@ public class Deobfuscator {
 	}
 
 	private boolean shouldRename(String s) {
+		if (whitelist.contains(s)) {
+			return false;
+		};
 		int len = s.length();
 		return len < minLength || len > maxLength;
 	}

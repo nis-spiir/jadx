@@ -482,6 +482,7 @@ public abstract class IntegrationTest extends TestUtils {
 		args.setDeobfuscationForceSave(true);
 		args.setDeobfuscationMinLength(2);
 		args.setDeobfuscationMaxLength(64);
+		args.setDeobfuscationWhitelist("");
 	}
 
 	protected void allowWarnInCode() {

@@ -52,6 +52,7 @@ public class JadxArgs {
 
 	private int deobfuscationMinLength = 0;
 	private int deobfuscationMaxLength = Integer.MAX_VALUE;
+	private List<String> deobfuscationWhitelist = new ArrayList<>(0);
 
 	private boolean escapeUnicode = false;
 	private boolean replaceConsts = true;
@@ -246,6 +247,14 @@ public class JadxArgs {
 		this.deobfuscationMaxLength = deobfuscationMaxLength;
 	}
 
+	public List<String> getDeobfuscationWhitelist() {
+		return deobfuscationWhitelist;
+	}
+
+	public void setDeobfuscationWhitelist(List<String> deobfuscationWhitelist) {
+		this.deobfuscationWhitelist = deobfuscationWhitelist;
+	}
+
 	public boolean isEscapeUnicode() {
 		return escapeUnicode;
 	}
@@ -357,6 +366,7 @@ public class JadxArgs {
 				+ ", useSourceNameAsClassAlias=" + useSourceNameAsClassAlias
 				+ ", deobfuscationMinLength=" + deobfuscationMinLength
 				+ ", deobfuscationMaxLength=" + deobfuscationMaxLength
+				+ ", deobfuscationWhitelist=" + deobfuscationWhitelist;
 				+ ", escapeUnicode=" + escapeUnicode
 				+ ", replaceConsts=" + replaceConsts
 				+ ", respectBytecodeAccModifiers=" + respectBytecodeAccModifiers
